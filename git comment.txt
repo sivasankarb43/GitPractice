@@ -1,0 +1,41 @@
+git clone
+
+git restore <file> --> to discard changes in working directory
+add
+
+status
+git restore --staged <file> --> to unstage
+commit -m "commit message"
+
+git config --global user.email "you@example.com"
+git config --global user.name "Your Name"
+
+push or push origin branchname
+git log
+
+-----creating new in new repo-----
+git init
+git remote add origin https://github.com/sivasankarb43/git2.git
+git status
+
+git revert revertId
+git reset --hard HEAD^ --> use to revert the revert before push
+
+----------------------------
+git branch --> to get current branch
+git branch -M newname --> to change master branch name
+git branch -a  --> check all the branches
+git checkout branchname   --> switch to branch
+git checkout main --> switch
+
+now in main (merge from branch)
+git diff branchname --> different from branch we are in main
+git merge branchName --> to merge
+-----------------------------------------------------
+
+git branch newbranch --creating new branch
+git push newbranch 
+
+pull from main:
+git pull orgin main --pull from main branch to child all changes
+
