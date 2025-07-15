@@ -38,4 +38,12 @@ git push newbranch
 
 pull from main:
 git pull orgin main --pull from main branch to child all changes
-
+-------------------------------
+Squash:
+git rebase -i HEAD~2
+:wq
+git log --oneline
+git push origin squash --force
+----------------------------------
+delete branch:
+git push origin --delete branch-name
