@@ -54,5 +54,6 @@ change branch name
 git branch -m new_branch_name
 After renaming locally, if the branch is already pushed to a remote, then:
 git push origin --delete old_branch
-git push origin -u feature_update
+Push the new branch and set upstream tracking:
+git push origin -u new_branch_name
 
