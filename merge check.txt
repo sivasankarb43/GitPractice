@@ -1,3 +1,564 @@
-sgfdyuhd
-ncdrwfgdjh
-vdwfg
+package demo;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+public class Practice {
+
+	public static void stringReverse(String name) {
+
+		// method 1 using charAt
+
+		String reversed1 = "";
+
+		for (int i = name.length() - 1; i >= 0; i--) {
+
+			reversed1 = reversed1 + name.charAt(i);
+		}
+		System.out.println("method 1: " + reversed1);
+
+		// method 2 using toCharArray
+
+		char[] charName = name.toCharArray();
+
+		String reversed2 = "";
+
+		for (int i = charName.length - 1; i >= 0; i--) {
+
+			reversed2 = reversed2 + charName[i];
+
+		}
+
+		System.out.println("method 2: " + reversed2);
+
+		// method 3
+
+		StringBuilder sb = new StringBuilder(name);
+		sb.reverse();
+		System.out.println("method 3: " + sb);
+
+		// method 4
+
+		StringBuffer sf = new StringBuffer(name);
+		sf.reverse();
+		System.out.println("method 4: " + sf);
+
+	}
+
+	public static void swapping(int a, int b) {
+
+		System.out.println("Before swap A= " + a + " ,B= " + b);
+
+		// method 1
+
+//		b=b+a;
+//		a=b-a;
+//		b=b-a;
+//		System.out.println("After method 1 swap A= "+a+" ,B= "+b);
+
+		// method 2
+
+		b = b * a;
+		a = b / a;
+		b = b / a;
+		System.out.println("After method 2 swap A= " + a + " ,B= " + b);
+
+	}
+
+	public static void reverseNum(int a) {
+
+		int rev = 0;
+
+		while (a != 0) {
+
+			rev = rev * 10;
+			rev = rev + a % 10;
+			a = a / 10;
+
+		}
+
+		System.out.println("Reversed Number: " + rev);
+
+	}
+
+	public static void floidsPyramid(int limit) {
+
+		int count = 1;
+		for (int row = 1; row <= limit; row++) {
+
+			for (int column = 1; column <= row; column++) {
+
+				System.out.print(count + " ");
+				count++;
+			}
+			System.out.println();
+
+		}
+
+	}
+
+	public static void lengthOfString(String name) {
+
+		System.out.println("Direct method 1: " + name.length());
+
+		char[] letter = name.toCharArray();
+
+		int length = 0;
+		for (char i : letter) {
+			length++;
+		}
+		System.out.println("method 2: " + length);
+
+	}
+
+	public static void findSmallNum(Integer[] num) {
+
+		// method 1
+		int small = num[0];
+
+		for (int i = 1; i <= num.length - 1; i++) {
+
+			if (small > num[i]) {
+				small = num[i];
+			}
+
+		}
+
+		System.out.println("method 1: " + small);
+
+		// method 2
+		List<Integer> list = Arrays.asList(num);
+		Collections.sort(list);
+
+		System.out.println("method 2: " + list.get(0));
+
+		// method 3
+		Arrays.sort(num);
+		System.out.println("method 3: " + num[0]);
+		
+		//method 4
+		System.out.println("method 2: " + Collections.min(list));
+
+	}
+
+	public static void reverseWord(String word) {
+
+		// method 1
+		String[] splitedString = word.split(" ");
+
+		String rev = "";
+
+		for (int i = splitedString.length - 1; i >= 0; i--) {
+
+			rev = rev + splitedString[i] + " ";
+
+		}
+		System.out.println("method 1: " + rev);
+	}
+
+	public static void arrayContains(Character[] listOfValue, char valueToFind) {
+
+		// method 1
+		boolean isPresent = false;
+		for (int i = 0; listOfValue.length - 1 > i; i++) {
+
+			if (valueToFind == listOfValue[i]) {
+				isPresent = true;
+				break;
+
+			}
+		}
+		if (isPresent) {
+			System.out.println("Array contains given value");
+		} else {
+			System.out.println("Array not contains given value");
+		}
+
+		// method 2
+		List<Character> list = Arrays.asList(listOfValue);
+
+		if (list.contains(valueToFind)) {
+			System.out.println("Array contains given value");
+		} else {
+			System.out.println("Array not contains given value");
+		}
+
+	}
+
+	public static void positionOfAlpha(char alpha) {
+
+		char lower = Character.toLowerCase(alpha);
+		int lowerLocation = (int) lower;
+		System.out.println("Location in lower case: " + (lowerLocation - 96));
+
+		char upper = Character.toUpperCase(alpha);
+		int upperLocation = (int) upper;
+		System.out.println("Location in upper case: " + (upperLocation - 64));
+
+	}
+
+	public static void repetationCount(String word, char letter) {
+
+		word = word.toLowerCase();
+		// method 1
+		char[] arrayChar = word.toCharArray();
+
+		int count = 0;
+
+		for (int i = 0; arrayChar.length - 1 > i; i++) {
+
+			if (arrayChar[i] == letter) {
+				count++;
+			}
+
+		}
+
+		System.out.println("method 1: count of letter '" + letter + "' in word '" + word + "' is: " + count);
+
+		// method 2
+		int actualCount = word.length();
+		word = word.replace(String.valueOf(letter), "");
+		System.out.println("method 2: count of letter '" + letter + "' in word '" + word + "' is: "
+				+ (actualCount - word.length()));
+
+	}
+
+	public static void replaceVowels(String word) {
+
+		// method 1
+		String[] str = word.split("");
+
+		for (int i = 0; i < str.length; i++) {
+
+			if (str[i].equals("a") || str[i].equals("e")) {
+
+				str[i] = "$";
+
+			}
+		}
+		for (String i : str) {
+			System.out.print(i);
+		}
+		System.out.println();
+
+		// method 2
+		word = word.replaceAll("[aeiouAEIOU]", "\\$");
+		System.out.println(word);
+
+	}
+
+	public static void leadTrail(String word) {
+
+		System.out.println(word.replaceAll("^[ \\t]+|[ \\t]+$", ""));
+
+	}
+
+	public static void numFromStr(String word) {
+
+		char[] splitWord = word.toCharArray();
+		int total = 0;
+
+		for (char c : splitWord) {
+
+			if (Character.isDigit(c)) {
+				total = total + Character.getNumericValue(c);
+			}
+
+		}
+
+		System.out.println("Total: " + total);
+
+	}
+
+	public static void findMissingAlpha(String word) {
+
+		String dummy = "abcdefghijklmnopqrstuvwxyz";
+		String[] given = word.split("");
+		String[] alpha = dummy.split("");
+
+		ArrayList<String> givenAry = new ArrayList<>(Arrays.asList(given));
+		ArrayList<String> alphaAry = new ArrayList<>(Arrays.asList(alpha));
+
+		alphaAry.removeAll(givenAry);
+		System.out.println(alphaAry);
+
+	}
+
+	public static void convertTocase(String word) {
+
+		char[] splitWord = word.toCharArray();
+
+		for (int i = 0; i < splitWord.length; i++) {
+
+			if (splitWord[i] >= 65 && splitWord[i] <= 90) {
+
+				splitWord[i] = (char) (splitWord[i] + 32);
+			}
+		}
+		for (char i : splitWord) {
+			System.out.print(i);
+		}
+
+	}
+
+	public static void vowelCount(String word) {
+
+		char[] array = word.toCharArray();
+		int count = 0;
+		for (char i : array) {
+
+			if (i == 'a' || i == 'e' || i == 'i' || i == 'o' || i == 'u' || i == 'A' || i == 'E' || i == 'I' || i == 'O'
+					|| i == 'U') {
+
+				count++;
+			}
+
+		}
+
+		System.out.println("Vowels count in the given sentence or word is: " + count);
+
+	}
+
+	public static void sortingArray(int[] num) {
+
+		for (int i = 0; i <= num.length - 1; i++) {
+			for (int j = i + 1; j <= num.length - 1; j++) {
+				
+
+				if (num[i] > num[j]) {
+					int tem = num[j];
+					num[j] = num[i];
+					num[i] = tem;
+				}
+			}
+		}
+		for (int n : num) {
+			System.out.println(n);
+		}
+
+	}
+
+	public static void numberIsArmstrong(int num) {
+
+		int count = 0;
+		int temp = num;
+		int armstrg = 0;
+		while (temp > 0) {
+
+			temp = temp / 10;
+			count++;
+		}
+
+		temp = num;
+		while (temp > 0) {
+
+			int last = temp % 10;
+			armstrg = (int) (armstrg + (Math.pow(last, count)));
+			temp = temp / 10;
+
+		}
+
+		if (armstrg == num) {
+
+			System.out.println("The given number is armstrong");
+
+		} else {
+			System.out.println("The given number is not armstrong");
+		}
+
+	}
+
+	public static void findTheGivenNumberIsPrime(int num) {
+
+		boolean isPrime = true;
+		if (num == 0 || num == 1) {
+			isPrime = false;
+		} else {
+			for (int i = 2; i <= num / 2; i++) {
+
+				if (num % i == 0) {
+					isPrime = false;
+					System.out.println("The given number is not prime");
+					break;
+				}
+
+			}
+		}
+		if (isPrime) {
+			System.out.println("The given number prime");
+		}
+
+	}
+
+//	akshay Question
+	public static void missingPosiveSmallNo(Integer[] given) {
+
+		int mis = 1;
+		int i = 1;
+
+		HashSet<Integer> ms = new HashSet<Integer>(Arrays.asList(given));
+		List<Integer> list = new ArrayList<Integer>(ms);
+		Collections.sort(list);
+
+		for (int j : list) {
+			if (j > 0) {
+				if (j == i) {
+					i++;
+//					mis = i;
+//					continue;
+				} else {
+					mis = i;
+					break;
+				}
+			}
+		}
+
+		System.out.println(mis);
+
+	}
+
+	public static void findFirstnonrepCharinString(String word) {
+
+		LinkedHashMap<Character, Integer> map = new LinkedHashMap<>();
+		boolean present = false;
+
+		for (char c : word.toCharArray()) {
+
+			map.put(c, map.getOrDefault(c, 0) + 1);
+
+		}
+
+		for (Map.Entry<Character, Integer> entry : map.entrySet()) {
+
+			if (entry.getValue() == 1) {
+				present = true;
+				System.out.println("The first non-repetative character in the given word is: " + entry.getKey());
+				break;
+			}
+		}
+		if (!present) {
+			System.out.println("There is no non-repetative character in the given word");
+		}
+
+		// method 2
+
+		for (char c : word.toCharArray()) {
+
+			if (word.indexOf(c) == word.lastIndexOf(c)) {
+				System.out.println("The first non-repetative character in the given word is: " + c);
+				break;
+			}
+
+		}
+	}
+
+	public static void findDuplicateElementInArray(int[] nums) {
+		Set<Integer> numSet = new HashSet<>();
+		Set<Integer> numDuplicate = new HashSet<>();
+
+		for (int n : nums) {
+			if (!numSet.add(n)) {
+				numDuplicate.add(n);
+			}
+		}
+		System.out.println("Duplicate no are: " + numDuplicate);
+
+	}
+
+	public static void anagram(String arg1, String arg2) {
+
+		if (arg1.length() != arg2.length()) {
+			throw new IllegalArgumentException("given args are not an Anagarms as the length are not equal");
+		}
+//		method1
+		else {
+			char[] ch1 = arg1.toCharArray();
+			Arrays.sort(ch1);
+			char[] ch2 = arg2.toCharArray();
+			Arrays.sort(ch2);
+			if (Arrays.equals(ch1, ch2)) {
+				System.out.println("The given Strings are Anagram");
+			} else {
+				System.out.println("not an anagram");
+			}
+//			method 2
+			String[] s1 = arg1.split("");
+			String[] s2 = arg2.split("");
+			List<String> l1 = Arrays.asList(s1);
+			List<String> l2 = Arrays.asList(s2);
+			Collections.sort(l1);
+			Collections.sort(l2);
+			if (l1.equals(l2)) {
+				System.out.println("The given Strings are Anagram");
+			} else {
+				System.out.println("not an anagram");
+			}
+
+		}
+
+	}
+
+	public static void findMissingNum(int[] arr) {
+
+		int n = arr.length + 1;
+		int expected = 0;
+		int sum = 0;
+		for (int i : arr) {
+			sum += i;
+		}
+		expected = n * (n + 1) / 2;
+
+		int missing = expected - sum;
+		System.out.println("The missing number from array is: " + missing);
+
+	}
+	
+	public static void secondLargest(int[] arr) {
+		
+		int first = Integer.MIN_VALUE;
+		int second = Integer.MIN_VALUE;
+		int third = Integer.MIN_VALUE;
+		
+		for(int i : arr) {
+			
+			if(i>first) {
+				third=second;
+				second=first;
+				first=i;
+			}else if(i>second) {
+				third=second;
+				second=i;
+			}else if(i>third) {
+				third=i;
+			}
+			
+		}
+		
+		System.out.println("The second largest value is: "+second);
+		System.out.println("The third largest value is: "+third);
+		
+	}
+	
+	public static void pyramid(int size) {
+		
+		for(int i=1; i<=size; i++) {
+			
+			for(int j =1; j<=size-i; j++) {
+				System.out.print(" ");
+			}
+			for(int j =1; j<=i; j++) {
+				System.out.print(" *");
+			}
+			System.out.println();
+			
+		}
+		
+	}
+
+}
